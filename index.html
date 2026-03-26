@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Don Associates | GST · Customs · EXIM · Legacy Law</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+:root {
+  --navy: #1a2744;
+  --navy-dark: #111b33;
+  --gold: #c8a951;
+  --gold2: #d4af57;
+  --white: #ffffff;
+  --light-bg: #f5f5f5;
+  --text: #333333;
+  --text-light: #666666;
+  --border: #e0e0e0;
+}
+body { font-family: 'Lato', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
+
+/* TOP BAR */
+.top-bar {
+  background: var(--navy-dark);
+  padding: 7px 0;
+  text-align: center;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.top-bar span { color: var(--gold); margin: 0 8px; }
+
+/* NAVBAR */
+nav {
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+  position: sticky; top: 0; z-index: 999;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 30px; height: 78px;
+}
+.logo-wrap { display: flex; flex-direction: column; line-height: 1; }
+.logo-name {
+  font-family: 'Merriweather', serif;
+  font-size: 27px; font-weight: 700;
+  color: var(--navy-dark); letter-spacing: 0.5px;
+}
+.logo-name span { color: var(--gold); }
+.logo-sub {
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text-light); margin-top: 5px;
+}
+.nav-menu { display: flex; list-style: none; align-items: center; gap: 0; }
+.nav-menu li a {
+  display: block; padding: 26px 15px;
+  font-size: 12.5px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; text-decoration: none;
+  color: var(--navy-dark);
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-menu li a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+.nav-menu li a.contact-btn {
+  background: var(--navy-dark); color: #fff;
+  padding: 10px 22px; border: none; border-radius: 0;
+  margin-left: 10px;
+  transition: background 0.25s;
+}
+.nav-menu li a.contact-btn:hover { background: var(--gold); color: var(--navy-dark); border-bottom-color: transparent; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+.hamburger span { width: 24px; height: 2px; background: var(--navy-dark); border-radius: 2px; }
+
+/* HERO SLIDER */
+.hero { position: relative; width: 100%; height: 580px; overflow: hidden; background: var(--navy-dark); }
+.slide { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 8%; opacity: 0; transition: opacity 0.9s ease; }
+.slide.active { opacity: 1; }
+.slide-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.slide-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(17,27,51,0.95) 35%, rgba(17,27,51,0.5) 100%); }
+.slide-content { position: relative; z-index: 2; max-width: 640px; }
+.slide-tag-pill {
+  display: inline-block; background: var(--gold);
+  color: var(--navy-dark); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  padding: 6px 18px; margin-bottom: 24px;
+}
+.slide-content h1 {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(30px, 4.2vw, 52px);
+  font-weight: 300; color: #fff;
+  line-height: 1.3; margin-bottom: 18px; letter-spacing: 0.3px;
+}
+.slide-content h1 strong { font-weight: 700; color: var(--gold); display: block; }
+.slide-content p {
+  font-size: 15.5px; color: rgba(255,255,255,0.7);
+  line-height: 1.85; margin-bottom: 32px; max-width: 520px;
+}
+.slide-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+.slide-pill { border: 1px solid rgba(200,169,81,0.45); color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 7px 16px; }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-gold { display: inline-block; background: var(--gold); color: var(--navy-dark); padding: 13px 32px; font-size: 12.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: background 0.25s; }
+.btn-gold:hover { background: #e0c06a; }
+.btn-ghost { display: inline-block; border: 2px solid rgba(255,255,255,0.4); color: #fff; padding: 12px 28px; font-size: 12.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.25s; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Slider Controls */
+.slider-dots { position: absolute; bottom: 28px; left: 8%; display: flex; gap: 10px; z-index: 10; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.3s; }
+.dot.active { background: var(--gold); transform: scale(1.25); }
+.sarrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 22px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.25s; }
+.sarrow:hover { background: var(--gold); border-color: var(--gold); color: var(--navy-dark); }
+.sarrow-l { left: 18px; }
+.sarrow-r { right: 18px; }
+
+/* STATS BAND */
+.stats-band { background: var(--navy-dark); }
+.stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); }
+.stat-cell { padding: 34px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.07); transition: background 0.3s; }
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: rgba(200,169,81,0.07); }
+.stat-n { font-family: 'Merriweather', serif; font-size: 40px; font-weight: 700; color: var(--gold); display: block; line-height: 1; margin-bottom: 7px; }
+.stat-l { font-size: 10.5px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+/* COMMON SECTION */
+.sec { padding: 80px 0; }
+.sec-inner { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+.sec-alt { background: var(--light-bg); }
+.lbl { display: inline-flex; align-items: center; gap: 12px; font-size: 10.5px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.lbl::before { content: ''; display: block; width: 30px; height: 2px; background: var(--gold); }
+.h2 { font-family: 'Merriweather', serif; font-size: clamp(24px,3vw,36px); font-weight: 300; color: var(--navy-dark); line-height: 1.35; margin-bottom: 14px; }
+.h2 strong { font-weight: 700; }
+.divider { width: 46px; height: 3px; background: var(--gold); margin: 16px 0 28px; }
+.subdesc { font-size: 15.5px; color: var(--text-light); line-height: 1.88; max-width: 640px; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.about-img { position: relative; }
+.about-img-box {
+  aspect-ratio: 4/3;
+  background: linear-gradient(140deg, var(--navy-dark) 0%, #1e2e55 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.about-img-box::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(200,169,81,0.03) 18px, rgba(200,169,81,0.03) 36px);
+}
+.about-yr {
+  position: absolute; bottom: -25px; right: -10px;
+  font-family: 'Merriweather', serif;
+  font-size: 110px; font-weight: 700;
+  color: rgba(200,169,81,0.07); line-height: 1; user-select: none;
+}
+.about-badge {
+  position: absolute; bottom: -22px; left: -22px;
+  background: var(--gold); padding: 22px 26px; text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.about-badge b { font-family: 'Merriweather', serif; font-size: 34px; font-weight: 700; color: var(--navy-dark); display: block; line-height: 1; }
+.about-badge small { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy-dark); }
+.about-svg-icon { position: relative; z-index: 1; text-align: center; }
+.about-svg-icon svg { opacity: 0.5; }
+.about-svg-icon p { color: rgba(200,169,81,0.4); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-top: 14px; }
+
+.about-text p { font-size: 15px; color: var(--text-light); line-height: 1.9; margin-bottom: 15px; }
+.about-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
+.feat { display: flex; gap: 14px; align-items: flex-start; padding: 16px; background: #f9f9f9; border-left: 3px solid transparent; transition: border-color 0.3s; }
+.feat:hover { border-left-color: var(--gold); }
+.feat-ico { width: 40px; height: 40px; flex-shrink: 0; background: var(--navy-dark); display: flex; align-items: center; justify-content: center; font-size: 17px; }
+.feat h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--navy-dark); margin-bottom: 3px; }
+.feat p { font-size: 12.5px; color: var(--text-light); line-height: 1.55; margin: 0; }
+
+/* SERVICES */
+.exp-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; margin-bottom: 64px; }
+.exp-card { background: #fff; border: 1px solid var(--border); padding: 34px 26px; text-align: center; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: default; }
+.exp-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+.exp-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+.exp-card:hover::after { transform: scaleX(1); }
+.exp-ico { font-size: 42px; margin-bottom: 18px; }
+.exp-card h3 { font-family: 'Merriweather', serif; font-size: 19px; font-weight: 400; color: var(--navy-dark); margin-bottom: 12px; }
+.exp-card p { font-size: 13.5px; color: var(--text-light); line-height: 1.8; }
+
+.core-grid { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--border); }
+.core-col { padding: 42px 34px; border-right: 1px solid var(--border); transition: background 0.3s; }
+.core-col:last-child { border-right: none; }
+.core-col:hover { background: var(--navy-dark); }
+.core-col:hover .core-h { color: var(--gold); }
+.core-col:hover .core-ico-box { background: rgba(200,169,81,0.12); border-color: var(--gold); }
+.core-col:hover .core-list li { color: rgba(255,255,255,0.68); border-color: rgba(255,255,255,0.07); }
+.core-ico-box { width: 60px; height: 60px; background: #f0f0f0; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; transition: all 0.3s; }
+.core-h { font-family: 'Merriweather', serif; font-size: 20px; font-weight: 700; color: var(--navy-dark); margin-bottom: 22px; transition: color 0.3s; }
+.core-list { list-style: none; }
+.core-list li { font-size: 13.5px; color: var(--text-light); padding: 9px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; transition: all 0.3s; }
+.core-list li:last-child { border-bottom: none; }
+.core-list li::before { content: '›'; font-size: 16px; font-weight: 700; color: var(--gold); flex-shrink: 0; }
+
+/* WHY US */
+.why-grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: 68px; align-items: start; }
+.why-mini-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 34px; }
+.wms { background: #fff; padding: 22px 12px; text-align: center; }
+.wms b { font-family: 'Merriweather', serif; font-size: 30px; font-weight: 700; color: var(--navy-dark); display: block; line-height: 1; margin-bottom: 5px; }
+.wms small { font-size: 9.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); }
+.why-pts { display: flex; flex-direction: column; gap: 16px; }
+.why-pt { display: flex; gap: 16px; align-items: flex-start; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-left: 3px solid transparent; transition: border-color 0.3s, box-shadow 0.3s; }
+.why-pt:hover { border-left-color: var(--gold); box-shadow: 0 4px 18px rgba(0,0,0,0.06); }
+.why-pt-ic { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.why-pt h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--navy-dark); margin-bottom: 4px; }
+.why-pt p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+
+.why-panel { background: var(--navy-dark); padding: 46px 42px; position: relative; overflow: hidden; }
+.why-wm { position: absolute; right: -15px; bottom: -35px; font-family: 'Merriweather', serif; font-size: 120px; font-weight: 700; color: rgba(200,169,81,0.05); line-height: 1; user-select: none; }
+.why-panel-inner { position: relative; z-index: 1; }
+.why-panel-head { display: flex; align-items: center; gap: 18px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.why-badge { width: 68px; height: 68px; background: var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+.why-badge b { font-family: 'Merriweather', serif; font-size: 26px; font-weight: 700; color: var(--navy-dark); line-height: 1; }
+.why-badge small { font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--navy-dark); }
+.why-hl { font-family: 'Merriweather', serif; font-size: 19px; font-weight: 300; color: #fff; line-height: 1.55; }
+.why-hl strong { font-weight: 700; color: var(--gold); }
+.why-quote { font-family: 'Merriweather', serif; font-size: 16.5px; font-style: italic; color: rgba(255,255,255,0.62); line-height: 1.85; margin-bottom: 20px; padding-left: 18px; border-left: 3px solid var(--gold); }
+.why-attr { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+.wtags { display: flex; flex-wrap: wrap; gap: 8px; }
+.wtag { background: rgba(200,169,81,0.09); border: 1px solid rgba(200,169,81,0.28); color: rgba(255,255,255,0.55); font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 13px; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; }
+.contact-desc { font-size: 15px; color: var(--text-light); line-height: 1.88; margin-bottom: 34px; }
+.cinfo-cards { display: flex; flex-direction: column; gap: 14px; }
+.ccard { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; background: #fff; border: 1px solid var(--border); transition: border-color 0.3s; }
+.ccard:hover { border-color: var(--gold); }
+.ccard-ico { width: 44px; height: 44px; flex-shrink: 0; background: var(--navy-dark); display: flex; align-items: center; justify-content: center; font-size: 17px; }
+.ccard h5 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.ccard p { font-size: 13.5px; color: var(--text); line-height: 1.55; }
+
+.cf { display: flex; flex-direction: column; gap: 15px; }
+.cf-title { font-family: 'Merriweather', serif; font-size: 24px; font-weight: 700; color: var(--navy-dark); margin-bottom: 6px; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.fg { display: flex; flex-direction: column; gap: 5px; }
+.fg label { font-size: 10.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); }
+.fg input, .fg select, .fg textarea { width: 100%; padding: 12px 15px; border: 1px solid var(--border); font-family: 'Lato', sans-serif; font-size: 13.5px; color: var(--text); outline: none; transition: border-color 0.2s; }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); }
+.fg textarea { resize: vertical; min-height: 108px; }
+.btn-submit { background: var(--navy-dark); color: #fff; border: none; padding: 14px 34px; font-family: 'Lato', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; align-self: flex-start; transition: background 0.25s; }
+.btn-submit:hover { background: var(--gold); color: var(--navy-dark); }
+
+/* FOOTER */
+footer { background: var(--navy-dark); }
+.ft-top { max-width: 1200px; margin: 0 auto; padding: 60px 30px 42px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.ft-brand-name { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+.ft-brand-name span { color: var(--gold); }
+.ft-sub { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+.ft-brand p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.9; margin-bottom: 18px; }
+.ft-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.ft-pill { background: rgba(200,169,81,0.1); border: 1px solid rgba(200,169,81,0.25); color: rgba(255,255,255,0.45); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 11px; }
+.ft-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.ft-col ul { list-style: none; }
+.ft-col ul li { margin-bottom: 9px; }
+.ft-col ul li a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+.ft-col ul li a::before { content: '›'; color: var(--gold); font-size: 15px; font-weight: 700; }
+.ft-col ul li a:hover { color: var(--gold); }
+.ft-col address { font-style: normal; font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.95; }
+.ft-col address strong { color: var(--gold); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-top: 8px; margin-bottom: 2px; }
+.ft-col address strong:first-child { margin-top: 0; }
+.ft-bot { max-width: 1200px; margin: 0 auto; padding: 20px 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.ft-bot p { font-size: 11.5px; color: rgba(255,255,255,0.28); }
+.ft-bot-links { display: flex; gap: 22px; }
+.ft-bot-links a { font-size: 11.5px; color: rgba(255,255,255,0.28); text-decoration: none; transition: color 0.2s; }
+.ft-bot-links a:hover { color: var(--gold); }
+
+/* REVEAL ANIMATION */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+.d4 { transition-delay: 0.4s; }
+
+/* MOBILE */
+@media (max-width: 980px) {
+  .nav-menu { display: none; }
+  .hamburger { display: flex; }
+  .hero { height: 480px; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 44px; }
+  .about-badge { bottom: -14px; left: -14px; }
+  .exp-grid { grid-template-columns: repeat(2,1fr); }
+  .core-grid { grid-template-columns: 1fr; }
+  .core-col { border-right: none; border-bottom: 1px solid var(--border); }
+  .core-col:last-child { border-bottom: none; }
+  .why-grid { grid-template-columns: 1fr; gap: 44px; }
+  .why-mini-stats { grid-template-columns: repeat(4,1fr); }
+  .contact-grid { grid-template-columns: 1fr; }
+  .ft-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .hero { height: 400px; }
+  .slide-content h1 { font-size: 26px; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .frow { grid-template-columns: 1fr; }
+  .ft-top { grid-template-columns: 1fr; }
+  .about-feats { grid-template-columns: 1fr; }
+  .why-mini-stats { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">GST <span>&bull;</span> CUSTOMS <span>&bull;</span> EXIM ADVISORY <span>&bull;</span> LEGACY LAW <span>&bull;</span> LITIGATION</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo-wrap">
+      <div class="logo-name">Don<span>.</span>Associates</div>
+      <div class="logo-sub">Indirect Tax &amp; Trade Advisors</div>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact" class="contact-btn">Contact Us</a></li>
+    </ul>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- HERO SLIDER -->
+<div class="hero" id="home">
+  <div class="slide active">
+    <div class="slide-bg" style="background:linear-gradient(135deg,#080f1e 0%,#1a2744 100%);"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag-pill">Established 2011 &nbsp;&middot;&nbsp; Chennai</div>
+      <h1>Leading Through<strong>Results</strong></h1>
+      <p>Strategies that bring successful outcomes. Specialised advisory in indirect taxation and international trade regulations for modern businesses.</p>
+      <div class="slide-pills">
+        <span class="slide-pill">GST</span>
+        <span class="slide-pill">Customs</span>
+        <span class="slide-pill">EXIM Advisory</span>
+        <span class="slide-pill">Legacy Law</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#services" class="btn-gold">Our Services</a>
+        <a href="#about" class="btn-ghost">About Us</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="slide-bg" style="background:linear-gradient(135deg,#0d1829 0%,#1c2e55 100%);"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag-pill">Track Record</div>
+      <h1>A Legacy of<strong>20 Years of Trust!</strong></h1>
+      <p>Two decades of delivering clear, practical guidance that enables our clients to operate with confidence and ease across India.</p>
+      <div class="hero-cta">
+        <a href="#about" class="btn-gold">Our Story</a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="slide-bg" style="background:linear-gradient(135deg,#0a1422 0%,#1a2744 100%);"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag-pill">Our Presence</div>
+      <h1>3 Offices &nbsp;&middot;&nbsp; 500+ Clients<strong>300+ Cases Handled</strong></h1>
+      <p>A handpicked team of professionals delivering personalised attention and resolving complex tax and trade concerns across Chennai.</p>
+      <div class="hero-cta">
+        <a href="#why" class="btn-gold">Why Us</a>
+        <a href="#contact" class="btn-ghost">Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <button class="sarrow sarrow-l" id="sprev">&#8249;</button>
+  <button class="sarrow sarrow-r" id="snext">&#8250;</button>
+  <div class="slider-dots">
+    <div class="dot active" data-i="0"></div>
+    <div class="dot" data-i="1"></div>
+    <div class="dot" data-i="2"></div>
+  </div>
+</div>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-cell reveal"><span class="stat-n" data-t="20">0+</span><span class="stat-l">Years of Trust</span></div>
+    <div class="stat-cell reveal d1"><span class="stat-n" data-t="3">0</span><span class="stat-l">Offices in Chennai</span></div>
+    <div class="stat-cell reveal d2"><span class="stat-n" data-t="500">0+</span><span class="stat-l">Clients Served</span></div>
+    <div class="stat-cell reveal d3"><span class="stat-n" data-t="300">0+</span><span class="stat-l">Cases Handled</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="sec" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <div class="about-img-box">
+          <div class="about-yr">2011</div>
+          <div class="about-svg-icon">
+            <svg width="90" height="90" viewBox="0 0 100 100" fill="none"><path d="M50 8C26.8 8 8 26.8 8 50s18.8 42 42 42 42-18.8 42-42S73.2 8 50 8zm0 76c-18.8 0-34-15.2-34-34s15.2-34 34-34 34 15.2 34 34-15.2 34-34 34z" fill="rgba(200,169,81,0.3)"/><path d="M50 24v26l18 10" stroke="rgba(200,169,81,0.5)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p>Founded 2011</p>
+          </div>
+        </div>
+        <div class="about-badge"><b>20+</b><small>Years</small></div>
+      </div>
+      <div class="about-text reveal d1">
+        <div class="lbl">About Us</div>
+        <h2 class="h2">Simplifying Indirect Taxation &amp; <strong>Trade Regulations</strong></h2>
+        <div class="divider"></div>
+        <p>Don Associates was founded by Don Bosco in 2011 and is a specialised advisory firm dedicated to simplifying the complexities of indirect taxation and international trade regulations for modern businesses. We hold deep domain expertise across GST, Customs, EXIM, and legacy tax laws.</p>
+        <p>What makes us stand apart is that we deliver clear, practical guidance that enables our clients to operate with confidence and ease. When disputes arise, our litigation team represents clients across all judicial and quasi-judicial forums — from original authorities to appellate bodies, tribunals, High Courts, and the Supreme Court.</p>
+        <p>Beyond advisory, Don Associates is committed to strengthening the larger tax ecosystem through knowledge sharing and capacity building. To us, integrity and trust mean the world.</p>
+        <div class="about-feats">
+          <div class="feat"><div class="feat-ico">⚖️</div><div><h4>All Forums</h4><p>High Courts, Tribunals &amp; Supreme Court</p></div></div>
+          <div class="feat"><div class="feat-ico">🎯</div><div><h4>Deep Expertise</h4><p>GST, Customs, EXIM &amp; Legacy Laws</p></div></div>
+          <div class="feat"><div class="feat-ico">🤝</div><div><h4>Client Trust</h4><p>500+ satisfied clients across industries</p></div></div>
+          <div class="feat"><div class="feat-ico">📚</div><div><h4>Knowledge Sharing</h4><p>Seminars, workshops &amp; pro-bono sessions</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="sec sec-alt" id="services">
+  <div class="sec-inner">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <div class="lbl" style="justify-content:center;">Our Expertise</div>
+      <h2 class="h2" style="max-width:560px;margin:0 auto 12px;">Comprehensive Tax &amp; <strong>Trade Services</strong></h2>
+      <div class="divider" style="margin:12px auto 0;"></div>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal"><div class="exp-ico">📋</div><h3>GST</h3><p>Tailored GST solutions for businesses of every scale — ensuring compliance, efficiency, and strategic tax optimisation across evolving regulations.</p></div>
+      <div class="exp-card reveal d1"><div class="exp-ico">🏛️</div><h3>Legacy Laws</h3><p>Deep expertise in Central Excise and Service Tax — reliable advisory and strong litigation support backed by a proven track record.</p></div>
+      <div class="exp-card reveal d2"><div class="exp-ico">🚢</div><h3>Customs</h3><p>Effective solutions to a range of Customs issues — from clearance and valuation to classification and rate of duty.</p></div>
+      <div class="exp-card reveal d3"><div class="exp-ico">🌐</div><h3>EXIM Advisory</h3><p>Expert guidance on export incentive schemes and strong expertise in litigations relating to the Foreign Trade Policy.</p></div>
+    </div>
+
+    <div class="reveal">
+      <div style="text-align:center;margin-bottom:38px;">
+        <div class="lbl" style="justify-content:center;">Core Services</div>
+        <h2 class="h2" style="max-width:480px;margin:0 auto;"><strong>Full Spectrum</strong> of Services</h2>
+      </div>
+      <div class="core-grid">
+        <div class="core-col">
+          <div class="core-ico-box">📚</div>
+          <div class="core-h">Knowledge Sharing</div>
+          <ul class="core-list">
+            <li>Pro-Bono Presentations</li>
+            <li>Seminars / Webinars</li>
+            <li>Interactive Workshops</li>
+            <li>Representations before Government</li>
+            <li>Resource Training &ndash; Govt &amp; Industry</li>
+            <li>Indirect Tax Updates</li>
+          </ul>
+        </div>
+        <div class="core-col">
+          <div class="core-ico-box">💼</div>
+          <div class="core-h">Consultancy</div>
+          <ul class="core-list">
+            <li>Legal Opinions</li>
+            <li>Tax Advisory</li>
+            <li>Impact Analysis / Tax Optimization</li>
+            <li>Drawback / Export Incentive</li>
+            <li>SVB Compliance</li>
+            <li>Refund Processing</li>
+          </ul>
+        </div>
+        <div class="core-col">
+          <div class="core-ico-box">⚖️</div>
+          <div class="core-h">Litigation</div>
+          <ul class="core-list">
+            <li>Supreme Court</li>
+            <li>High Courts</li>
+            <li>Tribunal</li>
+            <li>Original Forums</li>
+            <li>Advance Rulings</li>
+            <li>Appellate Forums</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="sec" id="why">
+  <div class="sec-inner">
+    <div class="why-grid">
+      <div class="reveal">
+        <div class="lbl">Why Choose Us</div>
+        <h2 class="h2">Why <strong>Don Associates?</strong></h2>
+        <div class="divider"></div>
+        <p class="subdesc" style="margin-bottom:32px;">Our core domain of practice with commitment to service, quality and accuracy. We bring deep expertise and personal attention to every mandate we undertake.</p>
+        <div class="why-mini-stats">
+          <div class="wms"><b>20+</b><small>Years</small></div>
+          <div class="wms"><b>3</b><small>Offices</small></div>
+          <div class="wms"><b>500+</b><small>Clients</small></div>
+          <div class="wms"><b>300+</b><small>Cases</small></div>
+        </div>
+        <div class="why-pts">
+          <div class="why-pt"><div class="why-pt-ic">⚖️</div><div><h4>All-Forum Litigation Strength</h4><p>From original authorities to the Supreme Court &mdash; we represent clients at every level of the judicial system.</p></div></div>
+          <div class="why-pt"><div class="why-pt-ic">🎯</div><div><h4>Practical, Clear Guidance</h4><p>We deliver actionable strategies that work in the real world, not just theoretical advice.</p></div></div>
+          <div class="why-pt"><div class="why-pt-ic">🏛️</div><div><h4>Ecosystem Contribution</h4><p>We invest in the tax ecosystem through training, workshops and pro-bono engagements for industry and government.</p></div></div>
+          <div class="why-pt"><div class="why-pt-ic">🤝</div><div><h4>Long-standing Relationships</h4><p>Hundreds of clients trust us, built on a foundation of integrity, transparency and consistent delivery.</p></div></div>
+        </div>
+      </div>
+      <div class="why-panel reveal d2">
+        <div class="why-wm">20</div>
+        <div class="why-panel-inner">
+          <div class="why-panel-head">
+            <div class="why-badge"><b>20+</b><small>Years</small></div>
+            <div class="why-hl">Two decades of <strong>integrity, trust</strong> and exceptional results.</div>
+          </div>
+          <blockquote class="why-quote">"To us integrity and trust mean the world. We have longstanding relationships with our clients and have helped hundreds of clients achieve their goals and growth."</blockquote>
+          <div class="why-attr">&mdash; Don Bosco, Founder &amp; Principal</div>
+          <div class="wtags">
+            <span class="wtag">GST Advisory</span>
+            <span class="wtag">Customs</span>
+            <span class="wtag">EXIM</span>
+            <span class="wtag">Legacy Laws</span>
+            <span class="wtag">Litigation</span>
+            <span class="wtag">Compliance</span>
+            <span class="wtag">Tax Optimization</span>
+            <span class="wtag">Knowledge Sharing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="sec sec-alt" id="contact">
+  <div class="sec-inner">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <div class="lbl" style="justify-content:center;">Get In Touch</div>
+      <h2 class="h2" style="max-width:440px;margin:0 auto 12px;">Reach Out to <strong>Don Associates</strong></h2>
+      <div class="divider" style="margin:12px auto 0;"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <h3 style="font-family:'Merriweather',serif;font-size:26px;font-weight:300;color:var(--navy-dark);margin-bottom:12px;">We're here to <strong>help you</strong></h3>
+        <div class="divider"></div>
+        <p class="contact-desc">Have a tax or trade query? Our team of specialists is ready to provide clear, practical guidance. Reach out and we will respond promptly.</p>
+        <div class="cinfo-cards">
+          <div class="ccard"><div class="ccard-ico">📍</div><div><h5>Our Offices</h5><p>3 offices across Chennai, Tamil Nadu, India</p></div></div>
+          <div class="ccard"><div class="ccard-ico">✉️</div><div><h5>Email Us</h5><p>info@donassociates.in</p></div></div>
+          <div class="ccard"><div class="ccard-ico">📞</div><div><h5>Call Us</h5><p>+91 44 0000 0000</p></div></div>
+          <div class="ccard"><div class="ccard-ico">⏰</div><div><h5>Office Hours</h5><p>Monday &ndash; Saturday: 9:30 AM &ndash; 6:30 PM</p></div></div>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="cf">
+          <div class="cf-title">Send a Message</div>
+          <div class="frow">
+            <div class="fg"><label>First Name</label><input type="text" placeholder="Your first name"></div>
+            <div class="fg"><label>Last Name</label><input type="text" placeholder="Your last name"></div>
+          </div>
+          <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+          <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 00000 00000"></div>
+          <div class="fg">
+            <label>Service Interest</label>
+            <select>
+              <option value="">Select a service area</option>
+              <option>GST Advisory &amp; Compliance</option>
+              <option>Customs</option>
+              <option>EXIM Advisory</option>
+              <option>Legacy Laws (Excise / Service Tax)</option>
+              <option>Litigation</option>
+              <option>Consultancy</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="fg"><label>Your Message</label><textarea placeholder="Briefly describe your requirement..."></textarea></div>
+          <button class="btn-submit">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand reveal">
+      <div class="ft-brand-name">Don<span>.</span>Associates</div>
+      <div class="ft-sub">Indirect Tax &amp; Trade Advisors</div>
+      <p>Specialised advisory firm simplifying indirect taxation and international trade regulations for modern businesses since 2011.</p>
+      <div class="ft-pills">
+        <span class="ft-pill">GST</span>
+        <span class="ft-pill">Customs</span>
+        <span class="ft-pill">EXIM</span>
+        <span class="ft-pill">Legacy Law</span>
+      </div>
+    </div>
+    <div class="ft-col reveal d1">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="ft-col reveal d2">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#services">GST Advisory</a></li>
+        <li><a href="#services">Customs</a></li>
+        <li><a href="#services">EXIM Advisory</a></li>
+        <li><a href="#services">Legacy Laws</a></li>
+        <li><a href="#services">Litigation</a></li>
+        <li><a href="#services">Consultancy</a></li>
+        <li><a href="#services">Knowledge Sharing</a></li>
+      </ul>
+    </div>
+    <div class="ft-col reveal d3">
+      <h4>Contact</h4>
+      <address>
+        <strong>Head Office</strong>Chennai, Tamil Nadu<br>India &ndash; 600 001<br>
+        <strong>Email</strong>info@donassociates.in<br>
+        <strong>Phone</strong>+91 44 0000 0000<br>
+        <strong>Hours</strong>Mon &ndash; Sat, 9:30 AM &ndash; 6:30 PM
+      </address>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>&copy; 2025 Don Associates. All rights reserved.</p>
+    <p style="color:rgba(255,255,255,0.22);font-size:11px;letter-spacing:2px;">GST &nbsp;&middot;&nbsp; CUSTOMS &nbsp;&middot;&nbsp; EXIM &nbsp;&middot;&nbsp; LEGACY LAW</p>
+    <div class="ft-bot-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#contact">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+/* SLIDER */
+const slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.dot');
+let cur=0,tmr;
+function goTo(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');}
+function restart(){clearInterval(tmr);tmr=setInterval(()=>goTo(cur+1),5200);}
+document.getElementById('snext').addEventListener('click',()=>{goTo(cur+1);restart();});
+document.getElementById('sprev').addEventListener('click',()=>{goTo(cur-1);restart();});
+dots.forEach(d=>d.addEventListener('click',()=>{goTo(+d.dataset.i);restart();}));
+restart();
+
+/* SCROLL REVEAL */
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* COUNTERS */
+const co=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(!e.isIntersecting)return;
+  const el=e.target,t=+el.dataset.t;
+  let v=0;const s=Math.ceil(t/55);
+  const iv=setInterval(()=>{v=Math.min(v+s,t);el.textContent=v+(t>=100?'+':t===3?'':'+');if(v>=t)clearInterval(iv);},22);
+  co.unobserve(el);
+}),{threshold:0.5});
+document.querySelectorAll('.stat-n[data-t]').forEach(el=>co.observe(el));
+
+/* NAV SCROLL HIGHLIGHT */
+const secs=document.querySelectorAll('[id]'),nls=document.querySelectorAll('.nav-menu a');
+window.addEventListener('scroll',()=>{
+  let c='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-90)c=s.id;});
+  nls.forEach(a=>{a.style.color='';a.style.borderBottomColor='transparent';
+    if(a.getAttribute('href')==='#'+c){a.style.color='var(--gold)';a.style.borderBottomColor='var(--gold)';}
+  });
+},{ passive:true });
+</script>
+</body>
+</html>
